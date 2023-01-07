@@ -1,5 +1,6 @@
 from dataclasses import dataclass, field, InitVar
 
+
 from config.config import HEX_EDGE, HEX_WIDTH, HEX_HEIGHT
 
 
@@ -30,3 +31,6 @@ class Hexagon:
 	@property
 	def y(self):
 		return self.position[1] * HEX_HEIGHT + (self.position[0] & 1) * HEX_HEIGHT / 2 + HEX_EDGE
+
+	def __hash__(self):
+		return sum(self.position)
